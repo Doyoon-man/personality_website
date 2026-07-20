@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Commission | 아트 커미션 시트</title>
+  <meta name="description" content="고품질 일러스트 커미션 안내 페이지입니다. 두상, 반신, 전신 그림 수주 및 가격 안내와 작업 슬롯을 확인하실 수 있습니다.">
+  <link rel="shortcut icon" href="images/Favicon.webp" type="image/webp">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="index.css">
+  <style>
+    /* 마우스 트래킹 툴팁 스타일 */
+    .mouse-tooltip {
+      position: fixed;
+      pointer-events: none;
+      background-color: #110b26;
+      color: #ffffff;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      line-height: 1.4;
+      width: max-content;
+      max-width: 280px;
+      white-space: normal;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.08);
+      z-index: 9999;
+      opacity: 0;
+      visibility: hidden;
+      transform: scale(0.95);
+      transition: opacity 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.2s;
+    }
+
+    .mouse-tooltip.show {
+      opacity: 1;
+      visibility: visible;
+      transform: scale(1);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 배경 애니메이션 요소 -->
+  <div class="bg-blur blur-1"></div>
+  <div class="bg-blur blur-2"></div>
+
+  <!-- 헤더 / 네비게이션 -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">FuriousSmile<span>.FS</span></a>
+      <nav>
+        <ul>
+          <li><a href="#about">개요</a></li>
+          <li><a href="#gallery">갤러리</a></li>
+          <li><a href="#rules">안내 및 규정</a></li>
+          <li><a href="#types">커미션 정보</a></li>
+          <li><a href="#slots">슬롯 현황</a></li>
+          <li><a href="#order">신청하기</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 메인 콘텐츠 -->
+  <main>
+    <!-- 인트로 섹션 -->
+    <section id="about" class="intro-section">
+      <div class="container intro-container">
+        <div class="intro-text">
+
+          <h1>Drawing<br><span class="gradient-text">Pretty & Powerful </span>Ladies</h1>
+          <p class="subtitle">FuriousSmile의 그림체로 표현되는 캐릭터들을 만나보세요.</p>
+          <div class="social-links">
+            <a href="https://x.com/FuriousSmile" target="_blank" aria-label="X / Twitter" class="social-btn twitter" data-tooltip="트위터에서 가장빠른 소식과 작업과정들을 확인하실 수 있습니다!">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span>X (Twitter)</span>
+            </a>
+            <a href="https://open.kakao.com/o/s55xsgEi" target="_blank" aria-label="Open KakaoTalk" class="social-btn kakao">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.316 6.007-.173.648-.624 2.338-.714 2.695-.11.439.16.434.338.315.139-.092 2.222-1.507 3.12-2.12.63.088 1.275.133 1.94.133 4.97 0 9-3.186 9-7.12C21 6.185 16.97 3 12 3z"/>
+              </svg>
+              <span>오픈채팅 문의</span>
+            </a>
+            <a href="https://www.deviantart.com/FuriousSmileFS" target="_blank" aria-label="DeviantArt" class="social-btn deviantart">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M4.928 0v4.717L7.89 10.334H4.928v5.825H10.378l2.961 5.618h4.607V17.06l-2.962-5.617h2.962V5.617H12.49L9.53 0H4.928zm0 0"/>
+              </svg>
+              <span>DeviantArt</span>
+            </a>
+            <a href="https://www.pixiv.net/users/50106406/" target="_blank" aria-label="Pixiv" class="social-btn pixiv">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12.19 0C5.787 0 .524 5.253.524 11.64c0 3.017 1.155 5.865 3.253 8.083.56.592 1.196 1.116 1.892 1.554.49.309.918.683 1.272 1.118a1.23 1.23 0 0 1 .18.89l-.292 1.637a.38.38 0 0 0 .518.423l1.833-1.002a2.317 2.317 0 0 1 1.765-.183c1.045.312 2.148.47 3.267.47 6.402 0 11.666-5.253 11.666-11.64C23.856 5.254 18.592 0 12.19 0zm.08 6.786c2.723 0 4.93 2.207 4.93 4.93s-2.207 4.93-4.93 4.93-4.93-2.207-4.93-4.93 2.207-4.93 4.93-4.93z"/>
+              </svg>
+              <span>Pixiv</span>
+            </a>
+            <a href="https://www.instagram.com/doyoon_fs" target="_blank" aria-label="Instagram" class="social-btn instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+        <div class="intro-showcase">
+          <div class="main-card">
+            <div class="card-image-wrap">
+              <img src="images/2026_MidoSEO.jpg" alt="대표 일러스트 샘플" id="showcase-img">
+            </div>
+            <div class="card-info">
+              <h3>대표 작업 샘플</h3>
+              <p>FuriousSmile's OC, Mido SEO</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 갤러리 섹션 (회전초밥 무한 롤링) -->
+    <section id="gallery" class="gallery-section">
+      <div class="container">
+        <h2 class="section-title">갤러리 <span>(2026 H1's Gallery)</span></h2>
+        <p class="section-subtitle">FuriousSmile의 작업물들을 확인해보세요.</p>
+      </div>
+      
+      <div class="marquee-wrapper">
+        <div class="marquee-track">
+          <!-- 첫 번째 세트 -->
+          <div class="gallery-card" data-desc="2017년부터 캐릭터 디자인을 시작하게 만든 유서깊은 오리지널 캐릭터 '서미도(Mido Seo)'입니다. 현실감에 맞는 차분한 갈색톤의 생머리, 무토 엑스테라6 태권도복을 주로 입는 인물입니다. 태권도를 좋아하는 숙녀이며, 고등학생때는 차기 선수로 주목 받았습니다만, 집안사정과 부모님과의 갈등으로 인해 빛을 보지 못한 비운의 인물입니다. 현재는 마케팅 경영학부에 진학하여 공부 중인 숙녀입니다. 성인이 된 후 취미로 태권도를 다시 시작하고 있으며, 일반인들 중에는 태권도 실력이 가장 뛰어납니다." data-author="FuriousSmile" data-date="2026.01.10">
+            <img src="images/2026_MidoSEO.jpg" alt="Gallery Artwork 1">
+            <div class="card-overlay">
+              <span class="card-tag">OC / Character Design Sheet</span>
+              <h4>Mido SEO</h4>
+            </div>
+          </div>
+          <div class="gallery-card" data-desc="2020년에 처음 디자인이 되었던 오리지널 캐릭터 '김하윤(Hayoon Kim)'입니다. 미도와는 2020년부터 친구로 지내왔습니다. 굉장히 개방적인 인물로, 고등학생때 가루스타일을 하고 다녀서 외모로 편견을 받아 불량서클들이 스카웃 했습니다. 그러나 불의를 보면 참지 못하는 성격 탓에 어울리지 않고, 절교를 하고 서미도와 친구가 됩니다. 의외로 학창시절 공부는 잘했던 탓에 현재는 성균관대학교 인문학부에서 공부 중이나, 흥미를 잃어 휴학 중이고, 피규어 샵 아르바이트를 하며, 코스프레가 취미인 숙녀입니다. 어렸을때 취득했던 태권도 2단 자격증을 이용해 다시 운동을 시작하고 있습니다. 절도있는 품새가 특기입니다." data-author="FuriousSmile" data-date="2026.02.15">
+            <img src="images/2026_HayoonKIM.jpg" alt="Gallery Artwork 2">
+            <div class="card-overlay">
+              <span class="card-tag">OC / Character Design Sheet</span>
+              <h4>Hayoon Kim</h4>
+            </div>
+          </div>
+          <div class="gallery-card" data-desc="2024년에 만든, 오리지널 캐릭터 '한예진(Yejin Han)'의 전신 캐릭터 디자인입니다. 고등학교 태권도 선수 시절 서미도와 라이벌인 관계로, 미도와 견줄 실력을 가진 태권소녀였습니다만, 미도의 퇴장으로 인하여 자신의 태권도 선수 생활에 회의감을 느끼고 방황을 합니다. 어찌저찌 대학은 갔으나, 무기력한 나날을 보내고 있다가, 미도의 근황을 알게 되면서 다시 태권도를 시작합니다. 예쁜외모에 자신있는 편으로, 유명한 인플루언서의 꿈을 갖고 자신의 일상과 태권도와 운동하는 모습을 틱톡에 업로드하며 팬들과 소통하고 있습니다. 강한 카리스마로 기선제압이 특징입니다. 고등학생때 주로 입었던 아디파이터 3선 도복을 입습니다." data-author="FuriousSmile" data-date="2026.03.01">
+            <img src="images/2026_YejinHan.jpg" alt="Gallery Artwork 3">
+            <div class="card-overlay">
+              <span class="card-tag">OC / Character Design Sheet</span>
+              <h4>Yejin Han</h4>
+            </div>
+          </div>
+          <div class="gallery-card" data-desc="커미션으로 진행된 캐릭터 '엘리자베스(Elizabeth)'의 전신 일러스트입니다. 모든 무술과 정보전에 능숙한 중국계 미국인 블랙요원입니다. 의뢰인이 이 중에서 합기도를 하는 모습을 의뢰 했습니다." data-author="FuriousSmile" data-date="2026.04.12">
+            <img src="images/Elizabeth.jpg" alt="Gallery Artwork 4">
+            <div class="card-overlay">
+              <span class="card-tag">Comissioned Art (LordofEdge120) / Fullbody</span>
+              <h4>Elizabeth</h4>
+            </div>
+          </div>
+          <div class="gallery-card" data-desc="커미션으로 제작된 캐릭터 '마이(Mai)'의 전신 일러스트입니다. 전직군인 설정이며, 2009년때 ACU 위장무늬를 입고있는 미군입니다. 유탄수로, M4카빈에 M203유탄발사기를 장착해 사용하고 있습니다." data-author="FuriousSmile" data-date="2026.04.28">
+            <img src="images/MAI.jpg" alt="Gallery Artwork 5">
+            <div class="card-overlay">
+              <span class="card-tag">Comissioned Art (Richie Initiative Projects) / Fullbody</span>
+              <h4>Mai</h4>
+            </div>
+          </div>
+          <div class="gallery-card" data-desc="커미션으로 요청받은 '요시로 & 일그(Yoshiro & Ylg)' 듀오 캐릭터의 반신 일러스트입니다. 유도를 하는 남성 캐릭터 Yoshiro 와 태권도를 하는 여성 캐릭터 Ylg의 일러스트로, Ylg를 도발하면서 깔보는 자신만만한 태도와 여유로운 미소를 짓고 있는 Yoshiro와 그런 그에게 분노하는 Ylg의 모습을 그리게 되었습니다. " data-author="FuriousSmile" data-date="2026.05.05">
+            <img src="images/Yoshiro&Ylg.jpg" alt="Gallery Artwork 6">
+            <div class="card-overlay">
+              <span class="card-tag">Comissioned Art (Yoshiro) / Halfbody</span>
+              <h4>Yoshiro&Ylg</h4>
+            </div>
+          </div>
+          <div class="gallery-card" data-desc="커미션으로 진행된 캐릭터 '유키코(Yukiko)'의 반신 일러스트입니다. 50대이며, 두 딸 (Akane, Hitomi)을 키워낸 어머니 캐릭터로, 태권도 그랜드 마스터입니다. 두 딸 또한 각자 태권도를 하며 성장한 것이 특징입니다." data-author="FuriousSmile" data-date="2026.05.20">
+            <img src="images/Yukiko.jpg" alt="Gallery Artwork 7">
+            <div class="card-overlay">
+              <span class="card-tag">Comissioned Art (Ray) / Halfbody</span>
+              <h4>Yukiko</h4>
+            </div>
+          </div>
+          <div class="gallery-card" data-desc="커미션으로 작업한 캐릭터 '수아(Sua)'의 전신 일러스트입니다. 여름 특전 모습으로 비키니 차림의 여성 캐릭터 Sua를 그리게 되었습니다." data-author="FuriousSmile" data-date="2026.06.02">
+            <img src="images/Sua.jpg" alt="Gallery Artwork 8">
+            <div class="card-overlay">
+              <span class="card-tag">Comissioned Art (Yosoyk) / Fullbody</span>
+              <h4>Sua</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 규정 및 공지사항 -->
+    <section id="rules" class="rules-section">
+      <div class="container">
+        <h2 class="section-title">안내 및 규정 <span>Notice & Rules</span></h2>
+        
+        <div class="rules-grid">
+          <div class="rules-card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+            </div>
+            <h3>주의사항 (필독)</h3>
+            <ul>
+              <li>트위터 DM, 카카오 오픈채팅, 이메일 등 편하신 방법으로 문의 주세요!</li>
+              <li>작업물은 포트폴리오 혹은 SNS에 공개될 수 있습니다. (비공개 요청 시 추가금 발생)</li>
+              <li>선지금 후에 그림을 그려드립니다!.</li>
+              <li class="text-danger">작업이 시작되면 환불은 불가능합니다.</li>
+            </ul>
+          </div>
+
+          <div class="rules-card">
+            <div class="card-icon">
+              <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                <line x1="16" y1="2" x2="16" y2="6"></line>
+                <line x1="8" y1="2" x2="8" y2="6"></line>
+                <line x1="3" y1="10" x2="21" y2="10"></line>
+              </svg>
+            </div>
+            <h3>작업 진행 단계</h3>
+            <ol>
+              <li><strong>문의 및 신청</strong>: 상담, 견적 문의</li>
+              <li><strong>입금</strong>: 작업 금액 확정 및 입금 확인</li>
+              <li><strong>스케치 컨펌 (1차)</strong>: 구도 및 배색 확인 (수정 가능)</li>
+              <li><strong>채색 진행</strong>: 디테일 묘사 진행</li>
+              <li><strong>최종 컨펌 (2차)</strong>: 색감 수정 및 추가 수정 가능</li>
+              <li><strong>완성본 전달</strong>: 이메일로 원본 파일(PNG) 발송</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 커미션 종류 안내 -->
+    <section id="types" class="types-section">
+      <div class="container">
+        <h2 class="section-title">커미션 종류 <span>Commission Option</span></h2>
+        
+        <!-- 신체 범위 가이드 및 주의사항 시트 -->
+        <div class="commission-guide-wrapper">
+          <div class="guide-image-col">
+            <div class="guide-image-card" id="guide-img-card">
+              <img src="images/commission_art_example.png" alt="커미션 신체 범위 가이드 예시" id="guide-zoom-img">
+            </div>
+          </div>
+          
+          <div class="guide-sheet-col">
+            <div class="guide-sheet-card">
+              <div class="sheet-header">
+                <h3>신체 범위별 가이드 및 주의사항</h3>
+                <p>타입 선택 시 아래 기준을 참고해 주시기 바랍니다.</p>
+              </div>
+              
+              <div class="sheet-content">
+                <table class="guide-table">
+                  <thead>
+                    <tr>
+                      <th>구분 (Type)</th>
+                      <th>작업 범위 (Range)</th>
+                      <th>참고사항 (Note)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="type-name">상반신 (Half Body)</td>
+                      <td>머리 끝부터 <strong>허벅지 중간 / 골반 라인</strong>까지</td>
+                      <td>캐릭터의 상체 포즈, 의상 디테일 위주의 묘사</td>
+                    </tr>
+                    <tr>
+                      <td class="type-name">전신 (Full Body)</td>
+                      <td>머리 끝부터 <strong>발 끝</strong>까지 전체 범위</td>
+                      <td>역동적인 포즈, 전신 캐릭터 디자인, 신발 묘사 포함</td>
+                    </tr>
+                  </tbody>
+                </table>
+                
+                <div class="guide-notice-box">
+                  <h4>신청 전 꼭 확인해 주세요!</h4>
+                  <ul>
+                    <li>비상업적 용도의 모든 작업물의 저작권은 작가(FuriousSmile)와 의뢰인에게 있습니다.</li>
+                    <li>지정된 범위를 벗어나거나 복잡한 소품/배경 추가 시 별도의 추가금이 청구될 수 있습니다.</li>
+                    <li>신청 시 참고용 캐릭터 자료나 원하시는 구도를 구체적으로 공유해 주시면 작업 속도가 빨라집니다.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="types-grid">
+          <!-- Ex.1 -->
+          <div class="type-card" 
+               data-tooltip="전신 구도를 생각 중이신가요? 상담을 통해 알려드립니다!"
+               data-type-id="Example 1"
+               data-type-tag="Example 1"
+               data-type-title="전신 (Full Body)"
+               data-type-price="70,000원"
+               data-type-desc="캐릭터의 전신을 그려드립니다. 배경, 포즈, 표정 등은 무료로 자유롭게 가능합니다. 단, 배경의 복잡함에 따라 작업 시간이 추가될 수 있습니다."
+               data-type-size="2400 x 3200 px"
+               data-type-period="최소 3일~"
+               data-type-bg="배경 추가시 작업 시간이 더 걸림.">
+            <div class="type-img-container">
+              <img src="images/Mido'skick.jpg" alt="전신 샘플">
+              <div class="type-card-overlay">
+                <span class="overlay-tag">Example.1</span>
+                <span class="overlay-text">자세히 보기</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ex.2 -->
+          <div class="type-card" 
+               data-tooltip="다른 상체 포즈를 생각 중이신가요? 상담을 통해 알려드립니다!"
+               data-type-id="Example 2"
+               data-type-tag="Example 2"
+               data-type-title="상반신 (Half body)"
+               data-type-price="50,000원~"
+               data-type-desc="허벅지 또는 골반 라인까지 포함하며 인물의 자연스러운 제스처와 복잡한 의상 표현이 돋보이는 타입입니다."
+               data-type-size="2400 x 3200 px"
+               data-type-period="최소 3일~"
+               data-type-bg="배경 추가시 작업 시간이 더 걸림.">
+            <div class="type-img-container">
+              <img src="images/Mido's_kick.jpg" alt="반신 샘플">
+              <div class="type-card-overlay">
+                <span class="overlay-tag">Example.2</span>
+                <span class="overlay-text">자세히 보기</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Ex.3 -->
+          <div class="type-card" 
+               data-tooltip="혹시 궁금한 점이 있으신가요? 상담을 통해 알려드립니다!"
+               data-type-id="Example 3"
+               data-type-tag="Example 3"
+               data-type-title="전신x2 (2 Full bodies)"
+               data-type-price="120,000원"
+               data-type-desc="캐릭터를 두명을 그려드립니다. 엑스트라 캐릭터 1명은 14.3% 할인으로, 총 12만원 입니다."
+               data-type-size="2400 x 3200 px"
+               data-type-period="최소 7일"
+               data-type-bg="엑스트라 캐릭터는 14.3% 할인 적용.">
+            <div class="type-img-container">
+              <img src="images/K.o.jpg" alt="전신 샘플">
+              <div class="type-card-overlay">
+                <span class="overlay-tag">Example.3</span>
+                <span class="overlay-text">자세히 보기</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 신청 양식 섹션 -->
+    <section id="order" class="order-section">
+      <div class="container">
+        <h2 class="section-title">신청서 작성 <span>Order Form</span></h2>
+        
+        <div class="order-layout">
+          <div class="form-instructions">
+            <h3>신청 안내</h3>
+            <p>아래 신청 양식을 복사하여 채워 넣으신 후, 오픈채팅 또는 이메일로 보내주시면 더욱 빠른 견적 확인이 가능합니다.</p>
+            <div class="contact-methods">
+              <div class="contact-item">
+                <strong>이메일</strong>
+                <span>enzoferrari1261@gmail.com</span>
+              </div>
+              <div class="contact-item">
+                <strong>오픈카카오</strong>
+                <a href="https://open.kakao.com/o/s55xsgEi" target="_blank" rel="noopener noreferrer">https://open.kakao.com/o/s55xsgEi</a>
+              </div>
+              <div class="contact-item">
+                <strong>디스코드</strong>
+                <span>furioussmile(#FS5057)</span>
+              </div>
+            </div>
+            <button id="btn-copy-form" class="btn btn-secondary">양식 클립보드 복사하기</button>
+            <span id="copy-toast" class="toast-message">양식이 클립보드에 복사되었습니다!</span>
+          </div>
+
+          <div class="form-display">
+            <textarea id="order-template" readonly>[커미션 신청 양식]
+
+1. 닉네임 / 입금자명: 
+2. 설계 구성: (Full body, Half body 등)
+3. 캐릭터 상세 설정 (외형, 복장, 표정 등): 
+   * 참고할 수 있는 이미지 파일이 있다면 메일 등으로 함께 첨부해 주세요.
+4. 기타 희망사항 (배경 요청 여부, 구도 및 분위기 등)
+5. 완성본을 받으실 이메일 주소: </textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 ARTIST. All Rights Reserved. Designed for premium arts.</p>
+    </div>
+  </footer>
+
+  <!-- 커미션 타입 상세 모달 -->
+  <div id="type-detail-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-wrapper">
+      <button class="modal-close-btn" id="type-detail-close-btn" aria-label="닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-content">
+        <!-- 왼쪽: 이미지 영역 -->
+        <div class="modal-image-pane">
+          <img id="type-modal-img" src="" alt="타입 샘플 이미지">
+        </div>
+        <!-- 오른쪽: 정보 영역 -->
+        <div class="modal-info-pane">
+          <div class="modal-info-header">
+            <span id="type-modal-tag" class="card-tag">Type A</span>
+            <h3 id="type-modal-title">타입 제목</h3>
+            <p id="type-modal-price" class="type-modal-price">가격 정보</p>
+          </div>
+          <div class="modal-info-body">
+            <p id="type-modal-desc">타입 상세 설명</p>
+            <div class="type-specs-box">
+              <h4 class="specs-title">타입 상세 사양</h4>
+              <ul class="type-specs-list">
+                <li><strong>기본 크기:</strong> <span id="type-modal-size">-</span></li>
+                <li><strong>작업 기간:</strong> <span id="type-modal-period">-</span></li>
+                <li><strong>기본 배경:</strong> <span id="type-modal-bg">-</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 이미지 상세 모달 -->
+  <div id="image-modal" class="modal-overlay" aria-hidden="true">
+    <div class="modal-wrapper">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="닫기">
+        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-content">
+        <!-- 왼쪽: 이미지 영역 -->
+        <div class="modal-image-pane">
+          <img id="modal-img" src="" alt="상세 이미지">
+        </div>
+        <!-- 오른쪽: 정보 영역 -->
+        <div class="modal-info-pane">
+          <div class="modal-info-header">
+            <span id="modal-tag" class="card-tag">태그</span>
+            <h3 id="modal-title">작품 제목</h3>
+          </div>
+          <div class="modal-info-body">
+            <p id="modal-desc">작품에 대한 상세한 설명이 여기에 들어갑니다.</p>
+          </div>
+          <div class="modal-info-footer">
+            <div class="info-meta-item">
+              <span class="meta-label">Artist</span>
+              <span id="modal-author" class="meta-value">FuriousSmile</span>
+            </div>
+            <div class="info-meta-item">
+              <span class="meta-label">Created At</span>
+              <span id="modal-date" class="meta-value">2026.01.10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 신체 가이드 전용 모달 -->
+  <div id="guide-modal" class="guide-modal-overlay" aria-hidden="true">
+    <div class="guide-modal-container">
+      <button class="guide-modal-close" id="guide-modal-close" aria-label="닫기">&times;</button>
+      <img class="guide-modal-img" src="images/commission_art_example.png" alt="신체 가이드 확대 이미지">
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+</html>
